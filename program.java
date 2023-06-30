@@ -1,4 +1,5 @@
 
+
 import java.util.Scanner;
 
 public class program {
@@ -9,12 +10,14 @@ public class program {
         while (true) {
             System.out.println("Укажите номер задачи:");
             System.out.println("1 - Вычислить n-ое треугольное число и факториал");
+            System.out.println("2 - Ввести все простые числа от 1 до 1000");
             System.out.println("0 - Завершение работы приложения");
             System.out.println("================================");
             int no = Integer.parseInt(scanner.nextLine());
 
             switch (no) {
                 case 1:
+                    //  1) Вычислить n-ое треугольного число (сумма чисел от 1 до n), n! (произведение чисел от 1 до n)
                     System.out.println("Введите число: ");
                     int number = Integer.parseInt(scanner.nextLine());
 
@@ -24,7 +27,10 @@ public class program {
                     int factorial = findFactorial(number);
                     System.out.println("Факториал: " + factorial);
                     break;
-
+                case 2:
+                    // 2) Вывести все простые числа от 1 до 1000
+                   printNums();
+                break;
                 case 0:
                     System.out.println("Завершение работы приложения.");
                     scanner.close();
@@ -50,4 +56,24 @@ public class program {
         }
         return factorial;
     }
-}
+
+    static boolean simpleNum(int num){
+        if(num <= 1){
+            return false;
+        }
+        for (int i = 2; i < num; i++) {
+            if(num % i == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    static void printNums(){
+        for (int i = 2; i < 1000; i++) {
+            if(simpleNum(i)){
+            System.out.print((i + ", "));
+            }
+            }
+            
+        }
+    }
