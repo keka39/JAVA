@@ -1,6 +1,7 @@
 
 
 import java.util.Scanner;
+import java.util.function.DoubleUnaryOperator;
 
 public class program {
 
@@ -10,19 +11,24 @@ public class program {
         while (true) {
             System.out.println("Укажите номер задачи:");
             System.out.println("1 - Вычислить n-ое треугольное число и факториал");
-            System.out.println("2 - Ввести все простые числа от 1 до 1000");
+            System.out.println("2 - Ввести все простые числа от 1 до 1000"); 
+            System.out.println("3 - Реализовать простой калькулятор");
             System.out.println("0 - Завершение работы приложения");
             System.out.println("================================");
+            String input = scanner.nextLine();
+            if (input.isEmpty()) {
+            continue; // Пустая строка, продолжаем цикл
+            }
             int no = Integer.parseInt(scanner.nextLine());
 
             switch (no) {
                 case 1:
                     //  1) Вычислить n-ое треугольного число (сумма чисел от 1 до n), n! (произведение чисел от 1 до n)
-                    System.out.println("Введите число: ");
+                    System.out.println("Введите треугольное число: ");
                     int number = Integer.parseInt(scanner.nextLine());
 
                     int sum = findSum(number);
-                    System.out.println("Треугольное число: " + sum);
+                    System.out.println("Сумма: " + sum);
 
                     int factorial = findFactorial(number);
                     System.out.println("Факториал: " + factorial);
@@ -30,6 +36,20 @@ public class program {
                 case 2:
                     // 2) Вывести все простые числа от 1 до 1000
                    printNums();
+                break;
+                case 3:
+                    // 3) Реализовать простой калькулятор
+                    double A;
+                    double B;
+                    char operator;
+                    System.out.println("Введите первое число: ");
+                    A = Double.parseDouble(scanner.nextLine());
+                    System.out.println("Введите второе число: ");
+                    B = Double.parseDouble(scanner.nextLine());
+                    System.out.print("Введите оператор (+, -, *, /): ");
+                    operator = scanner.next().charAt(0);
+                    System.out.println(calc(A, B, operator));
+
                 break;
                 case 0:
                     System.out.println("Завершение работы приложения.");
@@ -76,4 +96,29 @@ public class program {
             }
             
         }
+    
+    static double calc(double A, double B, char operator) {
+    double result = 0.0;
+
+    switch (operator) {
+        case '+':
+            result = A + B;
+            break;
+        case '-':
+            result = A - B;
+            break;
+        case '*':
+            result = A * B;
+            break;
+        case '/':
+            result = A / B;
+            break;
+        default:
+            System.out.println("Нет такого оператора"); 
     }
+    return result; 
+}
+}
+
+
+
