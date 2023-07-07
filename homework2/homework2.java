@@ -15,7 +15,7 @@ public class homework2 {
         }
 
         try {
-            File logFile = new File("log.txt");
+            File logFile = new File("/Users/anastasiamamulat/Desktop/JAVA/homework2");
             FileWriter fileWriter = new FileWriter(logFile);
             for (int i : array) {
                 fileWriter.write(i + " ");
