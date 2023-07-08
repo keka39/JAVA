@@ -1,7 +1,11 @@
 
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
-import java.util.function.DoubleUnaryOperator;
+
+
 
 public class program {
 
@@ -19,7 +23,7 @@ public class program {
             if (input.isEmpty()) {
             continue; // Пустая строка, продолжаем цикл
             }
-            int no = Integer.parseInt(scanner.nextLine());
+            int no = Integer.parseInt(input);
 
             switch (no) {
                 case 1:
@@ -48,8 +52,19 @@ public class program {
                     B = Double.parseDouble(scanner.nextLine());
                     System.out.print("Введите оператор (+, -, *, /): ");
                     operator = scanner.next().charAt(0);
-                    System.out.println(calc(A, B, operator));
+                    double result = calc(A, B, operator);
+                    System.out.println(result);
 
+                try {
+                    File logFile = new File("calc.txt");
+                    FileWriter fileWriter = new FileWriter(logFile);
+                    fileWriter.write(A + " " + operator + " " + B + " = " + result);
+                    fileWriter.close();
+                    System.out.println("Результаты записаны в файл 'calc.txt'");
+                    } catch (IOException ex) {
+                         ex.printStackTrace();
+                 }
+                    
                 break;
                 case 0:
                     System.out.println("Завершение работы приложения.");
