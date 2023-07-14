@@ -11,7 +11,6 @@ public class program {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         while (true) {
             System.out.println("Укажите номер задачи:");
             System.out.println("1 - Вычислить n-ое треугольное число и факториал");
@@ -54,7 +53,6 @@ public class program {
                     operator = scanner.next().charAt(0);
                     double result = calc(A, B, operator);
                     System.out.println(result);
-
                 try {
                     File logFile = new File("calc.txt");
                     FileWriter fileWriter = new FileWriter(logFile);
